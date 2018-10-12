@@ -1,0 +1,26 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.top {
+	height: 15%;
+	background-color:#55efc4;
+}
+
+.content {
+	height: 70%;
+	overflow: auto;
+}
+
+.bottom {
+	height: 15%;
+	background-color:#636e72;
+}
+
+
