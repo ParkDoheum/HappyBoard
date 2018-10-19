@@ -10,31 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/boardList")
-public class BoardListServlet extends HttpServlet {
+/**
+ * Servlet implementation class BoardDetailServlet
+ */
+@WebServlet("/boardDetail")
+public class BoardDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String btype = request.getParameter("btype");
-		String page = request.getParameter("page");
+		System.out.println("------ [boardDetail] GET -----");
+		String bid = request.getParameter("bid");
+		System.out.println("bid : " + bid);
 		
-		int intBtype = 0;
-		if(btype != null && !btype.equals("")) {
-			intBtype = Integer.parseInt(btype);	
-		}
-		
-		int intPage = 1;
-		if(page != null && !page.equals("")) {
-			intPage = Integer.parseInt(page);	
-		}
+		int intBid = Integer.parseInt(bid);
 		
 		//DB에서 자료 가져오기
 		BoardDAO dao = BoardDAO.getInstance();
-		ArrayList<BoardDTO> list = dao.getBoardList(intBtype, intPage);
+		BoardDTO dto = dao.getBoardItem(intBid);
 			
-		request.setAttribute("data", list);
-		request.setAttribute("target", "boardList");
-		request.setAttribute("btype", intBtype);
+		request.setAttribute("data", dto);
+		request.setAttribute("target", "boardDetail");
+		
 		RequestDispatcher rd = request.getRequestDispatcher("template.jsp");
 		rd.forward(request, response);
 	}
