@@ -25,4 +25,12 @@
 %>
 </table>
 
-<a href="boardWrite?btype=<%=btype%>&bid=0">글쓰기</a>
+<a href="boardReg?btype=<%=btype%>">글쓰기</a>
+
+
+
+
+
+
+
+

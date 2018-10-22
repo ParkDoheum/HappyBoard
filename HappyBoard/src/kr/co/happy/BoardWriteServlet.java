@@ -1,7 +1,6 @@
 package kr.co.happy;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +41,7 @@ public class BoardWriteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("------ [boardWrite] POST -----");
+		request.setCharacterEncoding("UTF-8");
 		String bid = request.getParameter("bid");
 		String btype = request.getParameter("btype");
 		String btitle = request.getParameter("btitle");

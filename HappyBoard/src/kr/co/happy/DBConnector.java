@@ -36,11 +36,4 @@ public class DBConnector {
 			try { c.close(); } catch(Exception e) {}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 }

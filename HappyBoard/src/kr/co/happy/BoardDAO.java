@@ -103,16 +103,15 @@ public class BoardDAO {
 	public void insertBoard(BoardDTO vo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
+		String sql = " INSERT INTO h_board " + 
+				" (BID, BTYPE, SEQ, BTITLE, BCONTENT, PW) "
+				+ " VALUES "
+				+ "( (SELECT nvl(max(bid), 0) + 1 from h_board) "
+				+ " , ? "  //1
+				+ " , (SELECT nvl(max(seq), 0) + 1 from h_board where btype = ?) " //2
+				+ " , ?, ?, ? )"; //3, 4, 5
 		
 		try {			
-			String sql = " INSERT INTO h_board " + 
-					" (BID, BTYPE, SEQ, BTITLE, BCONTENT, PW) "
-					+ " VALUES "
-					+ "( (SELECT nvl(max(bid), 0) + 1 from h_board) "
-					+ " , ? "  //1
-					+ " , (SELECT nvl(max(seq), 0) + 1 from h_board where btype = ?) " //2
-					+ " , ?, ?, ? )"; //3, 4, 5
-			
 			conn = DBConnector.getConn();
 			ps = conn.prepareStatement(sql);	
 			ps.setInt(1, vo.getBtype());

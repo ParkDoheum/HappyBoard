@@ -1,21 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="boardWrite" method="post">
+<%
+	String message = (String)request.getAttribute("msg");
+%>    
+<form action="boardMod" method="post">
 	제목: <input type="text" name="btitle" value="${data.btitle}"><br>
 	내용:
 	<textarea name="bcontent" rows="10" cols="10">${data.bcontent}</textarea><br>
 	비밀번호: <input type="password" name="pw"><br>
-	
-	<input type="hidden1" name="bid" value="${data.bid}">
-	<input type="hidden1" name="btype" value="${data.btype}">		
+		
+	<input type="hidden1" name="bid" value="${data.bid}">		
 			
 	<input type="submit" value="확인">
 </form>
-<% 
-	String msg = (String)request.getAttribute("msg");
-	if (msg != null && !msg.equals("")) {
-%>	
+
+<%
+	if (message != null && !message.equals("")) {
+%>
 	<script>
 		alert("${msg}");
 	</script>
-<% } %>	
+<%
+	}
+%>
+

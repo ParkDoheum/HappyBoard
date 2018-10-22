@@ -5,5 +5,5 @@
 내용:<br>
 ${data.bcontent}<br>
 <br>
-<a href="boardWrite?bid=${data.bid}">수정</a>
+<a href="boardMod?bid=${data.bid}">수정</a>
 <a href="boardDelete?bid=${data.bid}&btype=${data.btype}">삭제</a>
